@@ -2,7 +2,7 @@
 
 #show: book.page.with(title: "中文排版")
 
-建议结合#link("https://typst-doc-cn.github.io/docs/chinese/")[《Typst中文文档：中文用户指南》]食用。
+建议结合#link("https://typst.dev/chinese/")[《Typst中文文档：中文用户指南》]食用。
 
 == 中文排版 —— 字体
 
@@ -68,6 +68,6 @@ todo: 内嵌和超链接可直接食用的模板
 
 == 进一步阅读
 
-+ 参考#link("https://typst-doc-cn.github.io/docs/chinese/")[《Typst中文文档：中文用户指南》]，包含中文用户常见问题。
++ 参考#link("https://typst.dev/chinese/")[《Typst中文文档：中文用户指南》]，包含中文用户常见问题。
 + 参考#(refs.scripting-modules)[《模块、外部库与多文件文档》]，在你的电脑上共享中文文档模板。
 + 推荐使用的外部库列表

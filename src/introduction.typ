@@ -22,9 +22,9 @@ Typst的性能很好，是撰写长篇文本的极佳选择，例如书籍和报
 
 == 其他参考资料
 
-- #link("https://typst-doc-cn.github.io/docs/tutorial/")[官方文档翻译 - 入门教程]
-- #link("https://typst-doc-cn.github.io/docs/chinese/")[非官方中文用户指南]
-- #link("https://typst-doc-cn.github.io/docs/reference/")[官方文档翻译 - 参考]
+- #link("https://typst.dev/tutorial/")[官方文档翻译 - 入门教程]
+- #link("https://typst.dev/chinese/")[非官方中文用户指南]
+- #link("https://typst.dev/reference/")[官方文档翻译 - 参考]
 - #link("https://sitandr.github.io/typst-examples-book/book/about.html")[Typst Example Books]
 
 = 配置Typst运行环境
@@ -144,11 +144,11 @@ typst watch file.typ
 
   经过这一步，你应该已经基本入门了Typst的标记和脚本。此时，你和进阶用户的唯一区别是，你还不太会使用高级的样式配置。推荐：
   - 如果你熟练阅读英语，推荐主要参考#link("https://typst.app/docs/")[官方文档]的内容。
-  - 否则，推荐继续阅读本书剩下的内容，并参考#link("https://typst-doc-cn.github.io/docs/")[非官方中文文档]的内容。
+  - 否则，推荐继续阅读本书剩下的内容，并参考#link("https://typst.dev/")[非官方中文文档]的内容。
 
   有什么问题？
   - 本书只有《基础教程》完成了校对和润色，后续部分还非常不完善。甚至《基础教程》部分还有待改进。
-  - #link("https://typst-doc-cn.github.io/docs/")[非官方中文文档]是GPT机翻后润色的的结果，有可能错翻、漏翻，内容也可能有些许迟滞。
+  - #link("https://typst.dev/")[非官方中文文档]是GPT机翻后润色的的结果，有可能错翻、漏翻，内容也可能有些许迟滞。
 
 + 接着，阅读《基础教程》脚本Ⅱ和排版Ⅲ的五篇文章。
 
