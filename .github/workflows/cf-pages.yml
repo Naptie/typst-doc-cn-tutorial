@@ -33,18 +33,11 @@ jobs:
       - name: Build Book
         run: |
           shiroa build --font-path ./assets/typst-fonts/ --font-path ./assets/fonts/ --path-to-root /tutorial/ -w . src 
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload `/github-pages` sub directory
-          path: './dist'
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           projectName: typst-doc-cn-tutorial
-          directory: 'dist'
+          directory: './dist'
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
