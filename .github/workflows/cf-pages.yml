@@ -1,14 +1,9 @@
-name: tutorial::gh_pages
+name: tutorial::cf_pages
 on:
   push:
     branches:
       - main
   workflow_dispatch:
-    
-permissions:
-  pages: write
-  id-token: write
-  contents: read
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -17,11 +12,12 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-gh-pages:
+  build-cf-pages:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      deployments: write
+    name: Build and deploy
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -44,6 +40,11 @@ jobs:
         with:
           # Upload `/github-pages` sub directory
           path: './dist'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: typst-doc-cn-tutorial
+          directory: 'dist'
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
