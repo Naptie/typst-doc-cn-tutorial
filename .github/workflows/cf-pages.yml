@@ -8,7 +8,7 @@ on:
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: false
 
 jobs:
@@ -32,12 +32,12 @@ jobs:
           curl --proto '=https' --tlsv1.2 -LsSf https://github.com/Myriad-Dreamin/shiroa/releases/download/v0.2.0/shiroa-installer.sh | sh
       - name: Build Book
         run: |
-          shiroa build --font-path ./assets/typst-fonts/ --font-path ./assets/fonts/ --path-to-root / -w . src 
+          shiroa build --font-path ./assets/typst-fonts/ --font-path ./assets/fonts/ --path-to-root / -w . src
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           projectName: typst-doc-cn-tutorial
-          directory: './dist'
+          directory: "./dist"
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
