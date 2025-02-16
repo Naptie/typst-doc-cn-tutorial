@@ -1,4 +1,4 @@
-name: tutorial::cf_pages
+name: tutorial::deploy
 on:
   push:
     branches:
@@ -8,16 +8,15 @@ on:
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: "pages"
+  group: "deploy"
   cancel-in-progress: false
 
 jobs:
-  build-cf-pages:
+  deploy-cf:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       deployments: write
-    name: Build and deploy
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -41,3 +40,27 @@ jobs:
           projectName: typst-doc-cn-tutorial
           directory: "./dist"
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+  deploy-vercel:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - run: git submodule update --init --recursive
+      - name: Download font assets
+        # use fonts in stable releases
+        run: |
+          mkdir -p assets/fonts/
+          curl -L https://github.com/Myriad-Dreamin/shiroa/releases/download/v0.1.2/font-assets.tar.gz | tar -xvz -C assets/fonts
+      - name: Download & install shiroa
+        run: |
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/Myriad-Dreamin/shiroa/releases/download/v0.2.0/shiroa-installer.sh | sh
+      - name: Build Book
+        run: |
+          shiroa build --font-path ./assets/typst-fonts/ --font-path ./assets/fonts/ --path-to-root /tutorial -w . src
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel --prod --token $VERCEL_TOKEN
