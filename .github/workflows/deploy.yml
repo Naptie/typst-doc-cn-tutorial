@@ -62,5 +62,9 @@ jobs:
           shiroa build --font-path ./assets/typst-fonts/ --font-path ./assets/fonts/ --path-to-root /tutorial/ -w . src
       - name: Deploy to Vercel
         env:
+          VERCEL_JSON: ${{ secrets.VERCEL_JSON }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: npx vercel --prod --token $VERCEL_TOKEN
+        run: |
+          mkdir -p .vercel
+          echo $VERCEL_JSON > .vercel/project.json
+          npx vercel --prod --token $VERCEL_TOKEN
