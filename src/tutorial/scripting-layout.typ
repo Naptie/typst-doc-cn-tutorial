@@ -1,8 +1,13 @@
 #import "mod.typ": *
 
-#show: book.page.with(title: "度量与布局")
+#show: book.page.with(title: "长度与布局")
+
+#todo-box[本节处于校对阶段，所以可能存在不完整或错误。]
 
 本章我们再度回到排版专题，拓宽制作文档的能力。
+
+#let absent(content) = underline(offset: 1.5pt, underline(offset: 3pt, text(red, content)))
+#let ng(content) = underline(offset: 1.5pt, text(blue, content))
 
 == 长度类型
 
@@ -222,9 +227,6 @@ Typst还支持以「分数比」作长度单位。当分数比作长度单位时
 ```)
 
 但是使用`layout`会导致布局的多轮迭代，有可能*严重*降低编译性能。
-
-#let absent(content) = underline(offset: 1.5pt, underline(offset: 3pt, text(red, content)))
-#let ng(content) = underline(offset: 1.5pt, text(blue, content))
 
 == 布局概览与布局模型
 

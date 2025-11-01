@@ -1,6 +1,8 @@
 #import "mod.typ": *
 
-#show: book.page.with(title: "色彩与图表")
+#show: book.page.with(title: "图形排版")
+
+#todo-box[本节处于校对阶段，所以可能存在不完整或错误。]
 
 == 颜色类型
 
